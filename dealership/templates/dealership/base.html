@@ -1,0 +1,13 @@
+{% load static %}<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}DriveWise{% endblock %} | Car dealership reviews</title>
+<link rel="stylesheet" href="{% static 'dealership/styles.css' %}"></head>
+<body>
+<header class="site-header"><div class="container navigation"><a class="brand" href="/"><span class="brand-mark">D</span> DriveWise<span class="brand-dot">.</span></a>
+<nav aria-label="Main navigation"><a href="/">Dealerships</a><a href="/about/">About Us</a><a href="/contact/">Contact Us</a></nav>
+<div class="account">
+{% if user.is_authenticated %}<span class="hello">Hi, <strong>{{ user.username }}</strong></span><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit" class="button button-secondary">Log out</button></form>
+{% else %}<a class="button button-ghost" href="{% url 'login' %}">Log in</a><a class="button button-primary" href="{% url 'register' %}">Sign up</a>{% endif %}</div></div></header>
+<main>{% if messages %}<div class="container flash-stack">{% for message in messages %}<div class="flash">{{ message }}</div>{% endfor %}</div>{% endif %}{% block content %}{% endblock %}</main>
+<footer><div class="container footer-row"><span>© 2026 DriveWise · Coursework demonstration</span><span>Fictional dealership data for educational use</span></div></footer>
+</body></html>

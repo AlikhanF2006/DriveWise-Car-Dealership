@@ -1,0 +1,16 @@
+# Local-only files (do not publish credentials or database)
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+db.sqlite3
+.env
+.env.*
+!.env.example
+.local_admin_credentials.txt
+.evidence/
+node_modules/
+dist/
+.DS_Store
+*.log
+.pytest_cache/

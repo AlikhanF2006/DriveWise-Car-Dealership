@@ -1,0 +1,9 @@
+{% extends 'dealership/base.html' %}{% block title %}Find a dealership{% endblock %}
+{% block content %}
+<section class="hero"><div class="container hero-inner"><div class="eyebrow">THE SMARTER WAY TO FIND YOUR NEXT CAR</div><h1>Drive with confidence.<br><em>Choose with clarity.</em></h1>
+<p>Explore dealerships, compare experiences, and share your feedback with other drivers.</p>
+<div class="hero-metrics"><span><strong>{{ dealers|length }}</strong> dealerships listed</span><span><strong>Verified accounts</strong> for reviews</span></div></div></section>
+<section class="container catalog"><div class="section-head"><div><div class="eyebrow dark">DEALERSHIP DIRECTORY</div><h2>Explore showrooms</h2><p>Fictional sample locations for this coursework project.</p></div>
+<form class="filter" method="get" action="/"><label for="state">Filter by state</label><select id="state" name="state"><option value="">All states</option>{% for state in states %}<option value="{{ state }}" {% if state == chosen_state %}selected{% endif %}>{{ state }}</option>{% endfor %}</select><button type="submit" class="button button-primary">Apply</button></form></div>
+<div class="dealer-grid">{% for dealer in dealers %}<article class="dealer-card"><div class="card-visual"><div class="visual-symbol">✦</div><span class="card-state">{{ dealer.state }}</span></div><div class="card-content"><p class="card-city">{{ dealer.city }}, {{ dealer.state }}</p><h3>{{ dealer.name }}</h3><p>{{ dealer.address }}</p><div class="card-bottom"><span>★ Explore reviews</span><a class="button button-dark" href="{% url 'dealer_detail' dealer.id %}">View details →</a></div></div></article>{% empty %}<p>No dealerships found in this state.</p>{% endfor %}</div></section>
+{% endblock %}

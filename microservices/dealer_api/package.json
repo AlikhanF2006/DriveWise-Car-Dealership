@@ -1,0 +1,8 @@
+{
+  "name": "drivewise-dealer-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Express service with optional real MongoDB and sample-data fallback",
+  "scripts": {"start": "node index.js", "test": "node --test test.js"},
+  "dependencies": {"express": "^4.21.2", "mongodb": "^6.16.0"}
+}
